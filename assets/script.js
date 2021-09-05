@@ -97,12 +97,26 @@ function assignBackground(){
 assignBackground();
 
 
-btn1.addEventListener("click", function(){
-    var input = document.getElementById("input1");
-    localStorage.setItem("input", JSON.stringify(input));
-    // window.location.replace("index.html");
-    // var storedInputVal = JSON.parse(localStorage.getItem("input"));
-    input1.textContent = JSON.parse(localStorage.getItem("input"));
-    console.log(input);
+$('#btn1').on("click", () => {
+    var plan = document.querySelector("#input1").value;
+    console.log(plan);
+    localStorage.setItem("input", plan);
+    var storedInputVal = localStorage.getItem("input");
+    input1.textContent = storedInputVal;
+    console.log(storedInputVal);
   
 });
+
+
+window.onload = function() {
+    var input = localStorage.getItem("input");
+    input1.textContent = input;
+}
+$(window).on("load", function () {
+    var storedInputVal = localStorage.getItem("input");
+    input1.textContent = storedInputVal;
+})
+
+
+
+ 
