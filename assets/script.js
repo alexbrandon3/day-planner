@@ -81,42 +81,42 @@ var rows = [
 function assignBackground(){
     for(var i = 0; i < rows.length; i++){
         if(rows[i].time < currentHour){
-            rows[i].bg.setAttribute('class', 'past');
-            rows[i].input.setAttribute('class', 'past-input');
+            rows[i].bg.classList.add('past');
+            rows[i].input.classList.add('past-input');
         }
         else if(rows[i].time == currentHour){
-            rows[i].bg.setAttribute('class', 'present');
-            rows[i].input.setAttribute('class', 'present-input');
+            rows[i].bg.classList.add('present');
+            rows[i].input.classList.add('present-input');
         }
         else{
-            rows[i].bg.setAttribute('class', 'future');
-            rows[i].input.setAttribute('class', 'future-input');
+            rows[i].bg.classList.add('future');
+            rows[i].input.classList.add('future-input');
         }
     }
 }
 assignBackground();
 
 
-$('#btn1').on("click", () => {
-    var plan = document.querySelector("#input1").value;
+$('.saveBtn').on("click", function()  {
+    var id = $(this).attr('id');
+    var plan = $(this).siblings('.description').children('input').val();
     console.log(plan);
-    localStorage.setItem("input", plan);
-    var storedInputVal = localStorage.getItem("input");
-    input1.textContent = storedInputVal;
-    console.log(storedInputVal);
+    localStorage.setItem(id, plan);
+    console.log(id);
+    load();
   
 });
 
-
-window.onload = function() {
-    var input = localStorage.getItem("input");
-    input1.textContent = input;
+function load() {
+     $('#btn1').siblings('.description').children('input').val(localStorage.getItem("btn1"));
+     $('#btn2').siblings('.description').children('input').val(localStorage.getItem("btn2"));
+     $('#btn3').siblings('.description').children('input').val(localStorage.getItem("btn3"));
+     $('#btn4').siblings('.description').children('input').val(localStorage.getItem("btn4"));
+     $('#btn5').siblings('.description').children('input').val(localStorage.getItem("btn5"));
+     $('#btn6').siblings('.description').children('input').val(localStorage.getItem("btn6"));
+     $('#btn7').siblings('.description').children('input').val(localStorage.getItem("btn7"));
+     $('#btn8').siblings('.description').children('input').val(localStorage.getItem("btn8"));
+     $('#btn9').siblings('.description').children('input').val(localStorage.getItem("btn9"));
+     $('#btn10').siblings('.description').children('input').val(localStorage.getItem("btn10"));
 }
-$(window).on("load", function () {
-    var storedInputVal = localStorage.getItem("input");
-    input1.textContent = storedInputVal;
-})
-
-
-
- 
+load();
