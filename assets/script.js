@@ -96,7 +96,7 @@ function assignBackground(){
 }
 assignBackground();
 
-
+// Stores user input in local storage
 $('.saveBtn').on("click", function()  {
     var id = $(this).attr('id');
     var plan = $(this).siblings('.description').children('input').val();
@@ -107,6 +107,7 @@ $('.saveBtn').on("click", function()  {
   
 });
 
+// Renders stored user inputs from local storage upon page refresh
 function load() {
      $('#btn1').siblings('.description').children('input').val(localStorage.getItem("btn1"));
      $('#btn2').siblings('.description').children('input').val(localStorage.getItem("btn2"));
